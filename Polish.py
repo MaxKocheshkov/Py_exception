@@ -14,10 +14,14 @@ def polish(lst):
     else:
       assert user_index[0] in operation.keys(), 'Это никогда не должно произойти'
     try:
-      y = lst.pop(-2)
-      x = lst.pop(-1)
-      z = operation[user_index[0]](int(x), int(y))
-      user_input.append(z)  
+        y = lst.pop()
+        x = lst.pop()
+        if int(x) >= 0 and int(y) >= 0:
+          z = operation[user_index[0]](int(x), int(y))
+          user_input.append(z)
+        else:
+          print('Вводимые значения должны быть больше нуля!')
+          return
     except (KeyError, IndexError, ValueError):
       print('Проверьте вводимые значения')
     except ZeroDivisionError:
